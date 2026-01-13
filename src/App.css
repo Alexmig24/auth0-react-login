@@ -1,42 +1,147 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.contenedor {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.contenedor > h1 {
   text-align: center;
+  margin: 3rem auto 1rem;
+  padding: 0 2rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.contenedor > p {
+  text-align: center;
+  margin: 0 auto 2rem;
+  max-width: 600px;
+  padding: 0 2rem;
 }
 
-@keyframes logo-spin {
+/* Sección principal de contenido */
+.contenedor > * {
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(20px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+/* Estilos para el perfil */
+.perfil {
+  background: var(--background-light);
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  margin: 2rem auto;
+  max-width: 500px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-color);
+  text-align: center;
+  animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-.card {
-  padding: 2em;
+.perfil-imagen {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 1.5rem;
+  border: 4px solid var(--primary-color);
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+  display: block;
+  transition: transform 0.3s ease;
 }
 
-.read-the-docs {
-  color: #888;
+.perfil-imagen:hover {
+  transform: scale(1.05);
+}
+
+.perfil-nombre {
+  font-size: 2em;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.perfil-email {
+  font-size: 1.1em;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+}
+
+/* Botones de autenticación en la vista principal */
+.contenedor .button {
+  margin: 1rem auto;
+  display: block;
+  min-width: 200px;
+}
+
+.contenedor .logout.button {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+}
+
+.contenedor .logout.button:hover {
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+}
+
+/* Animación para estados de carga */
+.cargando, .error {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .contenedor > h1 {
+    font-size: 2em;
+    margin-top: 2rem;
+  }
+
+  .perfil {
+    margin: 1.5rem 1rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .perfil-imagen {
+    width: 100px;
+    height: 100px;
+  }
+
+  .perfil-nombre {
+    font-size: 1.5em;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .perfil {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  }
 }
